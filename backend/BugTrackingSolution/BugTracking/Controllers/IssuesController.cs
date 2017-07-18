@@ -21,6 +21,17 @@ namespace BugTracking.Controllers
             return new JsonNetResult{ Data = data };
         }
 
+        public ActionResult ListByUser(int? id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+
+            var data = db.Issues.Where(i => i.SubmittedByUserID == id).ToList();
+            return new JsonNetResult { Data = data };
+        }
+
         public ActionResult Get(int? id)
         {
             if (id == null)
