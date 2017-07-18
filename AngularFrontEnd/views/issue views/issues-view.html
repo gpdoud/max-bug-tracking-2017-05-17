@@ -1,0 +1,31 @@
+<div>
+	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+</div>
+<div>
+		<table class="table">
+			<thead>
+				<tr>					
+					<td>ID</td>
+					<td>Description</td>
+					<td>DateEntered</td>
+					<td>Severity</td>
+					<td>Priority</td>
+					<td>Status</td>
+					<td>SubmittedByUserID</td>
+					<td>ResolvingUserID</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="issues in ctrl.Issues">					
+					<td><span ng-bind="issues.ID"></span></td>
+					<td><span ng-bind="issues.Description"></span></td>
+					<td><span ng-bind="issues.DateEntered"></span></td>
+					<td><span ng-bind="issues.Severity"></span></td>
+					<td><span ng-bind="issues.Priority"></span></td>	
+					<td><span ng-bind="issues.Status"></span></td>	
+					<td><span ng-bind="issues.SubmittedByUserID"></span></td>	
+					<td><span ng-bind="issues.ResolvingUserID"></span></td>	
+				</tr>
+			</tbody>
+			</table>
+</div>
