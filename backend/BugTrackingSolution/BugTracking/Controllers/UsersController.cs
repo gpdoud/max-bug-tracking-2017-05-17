@@ -7,12 +7,83 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTracking.Models;
+using Api = System.Web.Http;
 
 namespace BugTracking.Controllers
 {
     public class UsersController : Controller
     {
         private BugTrackingContext db = new BugTrackingContext();
+
+        public ActionResult List()
+        {
+            return Json(db.Users.ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Get(int? id)
+        {
+            if (id == null)
+            {
+                return Json(new Msg { Result = "Failed", Message = "User not found" }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(db.Users.Find(id), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Remove(int? id)
+        {
+            if (id == null || db.Users.Find(id) == null)
+            {
+                return Json(new Msg { Result = "Failed", Message = "User not found" }, JsonRequestBehavior.AllowGet);
+            }
+
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return Json(new Msg { Result = "OK", Message = "Successfully deleted" }, JsonRequestBehavior.AllowGet);
+        }
+        
+        public ActionResult Add([Api.FromBody] User user)
+        {
+            if (user == null)
+            {
+                return Json(new Msg { Result = "Failure", Message = "User is empty" }, JsonRequestBehavior.AllowGet);
+            }
+
+            db.Users.Add(user);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                var e = ex;
+            }
+
+            return Json(new Msg { Result = "OK", Message = "Successfully added" }, JsonRequestBehavior.AllowGet);
+        }
+        
+        public ActionResult Change([Api.FromBody] User aUser)
+        {
+            if (aUser.ID == 0)
+            {
+                return Json(new Msg { Result = "Failure", Message = "aUser is empty" }, JsonRequestBehavior.AllowGet);
+            }
+
+            User user = db.Users.Find(aUser.ID);
+            user.UpdateAll(aUser);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                var e = ex;
+            }
+
+            return Json(new Msg { Result = "OK", Message = "Successfully updated" }, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: Users
         public ActionResult Index()

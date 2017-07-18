@@ -18,9 +18,10 @@ namespace BugTracking.Migrations
                         Priority = c.String(nullable: false, maxLength: 25),
                         Status = c.String(nullable: false, maxLength: 25),
                         SubmittedByUserID = c.Int(nullable: false),
-                        ResolvingUserID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Users", t => t.SubmittedByUserID, cascadeDelete: true)
+                .Index(t => t.SubmittedByUserID);
             
             CreateTable(
                 "dbo.Users",
@@ -37,6 +38,8 @@ namespace BugTracking.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.Issues", "SubmittedByUserID", "dbo.Users");
+            DropIndex("dbo.Issues", new[] { "SubmittedByUserID" });
             DropTable("dbo.Users");
             DropTable("dbo.Issues");
         }

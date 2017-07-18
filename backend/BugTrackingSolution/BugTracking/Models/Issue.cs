@@ -23,11 +23,18 @@ namespace BugTracking.Models {
         [Required]
         [MaxLength(25)]
         public string Status { get; set; }
-        
+
         public int SubmittedByUserID { get; set; }
         public virtual User SubmittedByUser { get; set; }
 
-        public int ResolvingUserID { get; set; }
-        public virtual User ResolvingUser { get; set; }
+        public void UpdateAll(Issue issue)
+        {
+            this.Description = issue.Description;
+            this.DateEntered = issue.DateEntered;
+            this.Severity = issue.Severity;
+            this.Priority = issue.Priority;
+            this.Status = issue.Status;
+            this.SubmittedByUserID = issue.SubmittedByUserID;
+        }
     }
 }

@@ -7,12 +7,84 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTracking.Models;
+using Api = System.Web.Http;
 
 namespace BugTracking.Controllers
 {
     public class IssuesController : Controller
     {
         private BugTrackingContext db = new BugTrackingContext();
+
+        public ActionResult List()
+        {
+            var data = db.Issues.ToList();
+            return new JsonNetResult{ Data = data };
+        }
+
+        public ActionResult Get(int? id)
+        {
+            if (id == null)
+            {
+                return Json(new Msg { Result = "Failed", Message = "Issue not found" }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(db.Issues.Find(id), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Remove(int? id)
+        {
+            if (id == null || db.Issues.Find(id) == null)
+            {
+                return Json(new Msg { Result = "Failed", Message = "Issue not found" }, JsonRequestBehavior.AllowGet);
+            }
+
+            Issue issue = db.Issues.Find(id);
+            db.Issues.Remove(issue);
+            db.SaveChanges();
+            return Json(new Msg { Result = "OK", Message = "Successfully deleted" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Add([Api.FromBody] Issue issue)
+        {
+            if (issue == null)
+            {
+                return Json(new Msg { Result = "Failure", Message = "Issue is empty" }, JsonRequestBehavior.AllowGet);
+            }
+
+            db.Issues.Add(issue);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                var e = ex;
+            }
+
+            return Json(new Msg { Result = "OK", Message = "Successfully added" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Change([Api.FromBody] Issue aIssue)
+        {
+            if (aIssue.ID == 0)
+            {
+                return Json(new Msg { Result = "Failure", Message = "aIssue is empty" }, JsonRequestBehavior.AllowGet);
+            }
+
+            Issue issue = db.Issues.Find(aIssue.ID);
+            issue.UpdateAll(aIssue);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                var e = ex;
+            }
+
+            return Json(new Msg { Result = "OK", Message = "Successfully updated" }, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: Issues
         public ActionResult Index()
