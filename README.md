@@ -10,6 +10,8 @@ There is no expectation that the entire project will be completed within the one
   * The system shall record bugs/enhancements discovered by users including
     * Description (text)
     * Date entered (date)
+    * Severity (High, Medium, Low) [Impact to customer]
+    * Priority (High, Medium, Low) [Urgency of resolution]
     * Date resolved (date)
     * Steps to recreate (text)
     * Status:
