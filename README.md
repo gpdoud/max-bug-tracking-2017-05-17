@@ -7,4 +7,12 @@ There is no expectation that the entire project will be completed within the one
 
 ## Requirements
 
-  -
+  * The system shall record bugs/enhancements discovered by users including
+    * Description (text)
+    * Date entered (date)
+    * Steps to recreate (text)
+    * Status:
+      * New - when initially entered
+      * Open - when a person begins working on it
+      * Resolved - when resolution has been found and bug updated
+      * Closed - when not resolved but not longer an issue
