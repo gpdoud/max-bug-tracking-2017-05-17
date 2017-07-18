@@ -22,3 +22,11 @@ There is no expectation that the entire project will be completed within the one
   * The system shall allow searching of description to find bugs matching a string
   * The system shall required users to login and be validated
   * The system shall produce a report of count of bugs/enh in each status and total bugs/enh
+
+## Project team
+The instructor and the students will comprise a development project team with the instructor taking the lead developer role. Students may divide the development work up any way they wish as outlined in the Scrum framework.
+
+Trello will be used to track the project.
+
+## Architecture
+The architecture of the project must use the same technologies learned during the bootcamp. Any variation must be approved by the instructor.
