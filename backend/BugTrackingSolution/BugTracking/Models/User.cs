@@ -18,5 +18,12 @@ namespace BugTracking.Models {
         [Required]
         [MaxLength(100)]
         public string Role { get; set; }
+
+        public void UpdateAll(User user)
+        {
+            this.Name = user.Name;
+            this.Email = user.Email;
+            this.Role = user.Role;
+        }
     }
 }
