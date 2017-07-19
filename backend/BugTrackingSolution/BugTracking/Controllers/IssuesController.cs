@@ -28,7 +28,8 @@ namespace BugTracking.Controllers
                 return Json(new Msg { Result = "Failed", Message = "Issue not found" }, JsonRequestBehavior.AllowGet);
             }
 
-            return Json(db.Issues.Find(id), JsonRequestBehavior.AllowGet);
+            var data = db.Issues.Find(id);
+            return new JsonNetResult { Data = data };
         }
 
         public ActionResult Remove(int? id)
