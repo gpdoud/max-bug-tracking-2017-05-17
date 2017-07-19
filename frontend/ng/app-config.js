@@ -1,44 +1,41 @@
-angular
-    .module("BugTrackerApp")
-    .config(BugTrackerConfig);
+angular.module("BugTrackerApp")
+	.config(BugTrackerConfig);
 
 BugTrackerConfig.$inject = ["$routeProvider", "$locationProvider"];
 
 function BugTrackerConfig($routeProvider, $locationProvider) {
-    $locationProvider.hashPrefix('');
+	$locationProvider.hashPrefix('');
 
-    $routeProvider
-        .when('/', {
-            templateUrl: 'views/home-view.html'
-        })
-        .otherwise({
-            redirectTo: '/'
-        })
-        .when('/users', {
-            templateUrl: 'views/users-view.html',
-            controller: 'UserCtrl',
-            controllerAs: 'ctrl'
-        })
-
-        .when('/users/detail/:id', {
-            templateUrl: 'views/users-detail-view.html',
-            controller: 'UserCtrl',
-            controllerAs: 'ctrl'
-        })
-        .when('/users/edit/:id', {
-            templateUrl: 'views/users-edit-view.html',
-            controller: 'UserCtrl',
-            controllerAs: 'ctrl'
-        })
-        .when('/users/add/', {
-            templateUrl: 'views/users-add-view.html',
-            controller: 'UserCtrl',
-            controllerAs: 'ctrl'
-        })
-        .when('/users/login/', {
-            templateUrl: 'views/users-login-view.html',
-            controller: 'UserCtrl',
-            controllerAs: 'ctrl'
-        }) 
-
+	$routeProvider
+		.when('/', {
+			templateUrl: 'views/home-view.html'
+		})
+		.when('/issues', {
+			templateUrl: 'views/issue views/issues-view.html',
+			controller: 'IssuesCtrl',
+			controllerAs: 'ctrl'
+		})
+		.when('/issues/edit/:id', {
+			templateUrl: 'views/issue views/issues-edit.html',
+			controller: 'IssuesCtrl',
+			controllerAs: 'ctrl'
+		})
+		.when('/issues/details/:id', {
+			templateUrl: 'views/issue views/issues-detail.html',
+			controller: 'IssuesCtrl',
+			controllerAs: 'ctrl'
+		})
+		.when('/issues/add', {
+			templateUrl: 'views/issue views/issues-add.html',
+			controller: 'IssuesCtrl',
+			controllerAs: 'ctrl'
+		})
+		.when('/login', {
+			templateUrl: 'views/login-view.html',
+			controller: 'AuthenticationCtrl', 
+			controllerAs: 'ctrl'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
 }

@@ -1,4 +1,3 @@
-
 angular.module("BugTrackerApp")
 	.controller("IssuesCtrl", IssuesCtrl);
 
@@ -76,7 +75,6 @@ function IssuesCtrl($http, $routeParams, $location, IssuesSvc, SystemSvc) {
 			function(err) {
 				console.log("Error", err);
 			}
-
 		);
 	}
 }
