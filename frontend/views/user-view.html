@@ -1,0 +1,33 @@
+<div>
+	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+    <a href="#/">Create New</a> - 
+    <label>Search: <input ng-model="ctrl.SearchCriteria"></label>
+</div>
+<div>
+		<table class="table">
+			<thead>
+				<tr>					
+					<td>ID</td>
+					<td>Name</td>
+					<td>Email</td>
+					<td>Role</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="users in ctrl.Users | filter: ctrl.SearchCriteria">					
+					<td><span ng-bind="user.ID"></span></td>
+					<td><span ng-bind="user.Name"></span></td>
+					<td><span ng-bind="user.Email"></span></td>
+					<td><span ng-bind="user.Role"></span></td>
+					<td>
+                    <a href="#/issues/edit/{{users.ID}}" class="GlyphLink">
+                        <span title="Edit" class="glyphicon glyphicon-pencil"></span>
+                    </a>&nbsp;
+                    <a href="#/issues/details/{{users.ID}}" class="GlyphLink">
+                        <span title="Details" class="glyphicon glyphicon-list-alt"></span>
+                    </a>
+                    </td>
+				</tr>
+			</tbody>
+			</table>
+</div>
