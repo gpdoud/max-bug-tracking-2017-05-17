@@ -25,6 +25,16 @@ function BugTrackerConfig($routeProvider, $locationProvider) {
 			controller: 'IssuesCtrl',
 			controllerAs: 'ctrl'
 		})
+		.when('/issues/add', {
+			templateUrl: 'views/issue views/issues-add.html',
+			controller: 'IssuesCtrl',
+			controllerAs: 'ctrl'
+		})
+		.when('/login', {
+			templateUrl: 'views/login-view.html',
+			controller: 'AuthenticationCtrl', 
+			controllerAs: 'ctrl'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

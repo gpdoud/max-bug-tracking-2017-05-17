@@ -9,8 +9,9 @@ function IssuesCtrl($http, $routeParams, $location, IssuesSvc, SystemSvc) {
 	self.PageTitle = "Issues";
 
 	self.SelectedIssueID = $routeParams.id;
-	self.NewIssue = [];
 	self.Issues = [];
+
+	self.IsLoggedIn = SystemSvc.CheckIfUserLoggedIn();
 
 	self.Severity = ["High", "Medium", "Low"];
 	self.Priority = ["High", "Medium", "Low"];
@@ -39,6 +40,11 @@ function IssuesCtrl($http, $routeParams, $location, IssuesSvc, SystemSvc) {
 		}
 	);
 //Create Issue**
+	if(self.IsLoggedIn) {
+		self.NewIssue = {
+			SubmittedByUserID: SystemSvc.GetActiveUser().ID
+		};
+	}
 	self.Create = function(issue) {
 		IssuesSvc.Add(issue).then(
 			function(resp) {

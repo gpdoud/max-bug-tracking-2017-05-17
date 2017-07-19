@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201707181914584_Initialization.Designer.cs">
       <DependentUpon>201707181914584_Initialization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707191612528_Updated-User-Model.cs" />
+    <Compile Include="Migrations\201707191612528_Updated-User-Model.Designer.cs">
+      <DependentUpon>201707191612528_Updated-User-Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BugTrackingContext.cs" />
     <Compile Include="Models\Issue.cs" />
@@ -295,6 +299,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201707181914584_Initialization.resx">
       <DependentUpon>201707181914584_Initialization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707191612528_Updated-User-Model.resx">
+      <DependentUpon>201707191612528_Updated-User-Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
