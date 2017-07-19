@@ -1,0 +1,40 @@
+<div>
+	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+	<a href="#/">Create New</a> - 
+	<label>Search: <input ng-model="ctrl.SearchCriteria"></label>
+</div>
+<div>
+	<table class="table">
+		<thead>
+			<tr>					
+				<th>ID</th>
+				<th>Description</th>
+				<th>Date Entered</th>
+				<th>Severity</th>
+				<th>Priority</th>
+				<th>Status</th>
+				<th>Submitted By</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="issues in ctrl.Issues | filter: ctrl.SearchCriteria">					
+				<td><span ng-bind="issues.ID"></span></td>
+				<td><span ng-bind="issues.Description"></span></td>
+				<td><span ng-bind="issues.DateEntered"></span></td>
+				<td><span ng-bind="issues.Severity"></span></td>
+				<td><span ng-bind="issues.Priority"></span></td>	
+				<td><span ng-bind="issues.Status"></span></td>	
+				<td><span ng-bind="issues.SubmittedByUser.Name"></span></td>
+				<td>
+					<a href="#/issues/edit/{{issues.ID}}" class="GlyphLink">
+						<span title="Edit" class="glyphicon glyphicon-pencil"></span>
+					</a>&nbsp;
+					<a href="#/issues/details/{{issues.ID}}" class="GlyphLink">
+						<span title="Details" class="glyphicon glyphicon-list-alt"></span>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
