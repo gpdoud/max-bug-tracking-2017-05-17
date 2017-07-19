@@ -1,0 +1,20 @@
+#View {
+	width: 80%;
+	margin: auto;
+}
+
+#PageTitle {
+	font-size: 2em;
+}
+
+#DetailTable {
+	width: 35%;
+}
+
+#DetailHeading {
+	font-weight: bold;
+}
+
+a.GlyphLink {
+	text-decoration: none;
+}

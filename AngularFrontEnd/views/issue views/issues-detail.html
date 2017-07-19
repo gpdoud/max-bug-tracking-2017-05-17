@@ -1,0 +1,63 @@
+<div>
+	<div><span id="PageTitle">Details</span></div>
+</div>
+<div>
+	<table id="DetailTable" class="table">
+		<tbody>
+			<tr>
+				<td>
+					<span id="DetailHeading">Description </span>
+				</td>
+				<td>
+					<span ng-bind="ctrl.SelectedIssue.Description"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span id="DetailHeading">Date Entered </span>
+				</td>
+				<td>
+					<span ng-bind="ctrl.SelectedIssue.DateEntered"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span id="DetailHeading">Severity </span>
+				</td>
+				<td>
+					<span ng-bind="ctrl.SelectedIssue.Severity"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span id="DetailHeading">Priority </span>
+				</td>
+				<td>
+					<span ng-bind="ctrl.SelectedIssue.Priority"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span id="DetailHeading">Status </span>
+				</td>
+				<td>
+					<span ng-bind="ctrl.SelectedIssue.Status"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span id="DetailHeading">Submitted By </span>
+				</td>
+				<td>
+					<span ng-bind="ctrl.SelectedIssue.SubmittedByUser.Name"></span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<button class="btn btn-danger" ng-click="ctrl.Delete(ctrl.SelectedIssue.ID)">Delete</button>&nbsp;
+	<a href="#/issues/edit/{{ctrl.SelectedIssue.ID}}" class="GlyphLink">
+		<button class="btn btn-info">Edit</button>
+	</a>&nbsp;
+	<a href="#/issues">Back to list</a>
+</div>
