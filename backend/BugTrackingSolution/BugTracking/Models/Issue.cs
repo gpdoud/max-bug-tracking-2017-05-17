@@ -10,7 +10,7 @@ namespace BugTracking.Models {
         [Required]
         public int ID { get; set; }
         [Required]
-        [MaxLength(255)]
+        [MaxLength(1000)]
         public string Description { get; set; }
         [Required]
         public DateTime DateEntered { get; set; }
@@ -23,9 +23,14 @@ namespace BugTracking.Models {
         [Required]
         [MaxLength(25)]
         public string Status { get; set; }
-
+        
         public int SubmittedByUserID { get; set; }
+        public int? ResolvedByUserID { get; set; }
+
+        [ForeignKey("SubmittedByUserID")]
         public virtual User SubmittedByUser { get; set; }
+        [ForeignKey("ResolvedByUserID")]
+        public virtual User ResolvedByUser { get; set; }
 
         public void UpdateAll(Issue issue)
         {
@@ -35,6 +40,7 @@ namespace BugTracking.Models {
             this.Priority = issue.Priority;
             this.Status = issue.Status;
             this.SubmittedByUserID = issue.SubmittedByUserID;
+            this.ResolvedByUserID = issue.ResolvedByUserID;
         }
     }
 }

@@ -14,13 +14,16 @@ namespace BugTracking.Models
         // automatically whenever you change your model schema, please use data migrations.
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-    
+
         public BugTrackingContext() : base("name=BugTrackingContext")
         {
+
         }
 
         public System.Data.Entity.DbSet<BugTracking.Models.Issue> Issues { get; set; }
 
         public System.Data.Entity.DbSet<BugTracking.Models.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<BugTracking.Models.IssueSolution> IssueSolutions { get; set; }
     }
 }

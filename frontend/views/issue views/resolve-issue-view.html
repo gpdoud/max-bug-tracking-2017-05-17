@@ -1,0 +1,29 @@
+<div ng-if="ctrl.IsLoggedIn">
+	<div><span id="PageTitle">Resolve Bug</span></div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Description</th>
+				<th>Date Entered</th>
+				<th>Severity</th>
+				<th>Priority</th>
+				<th>Submitted By</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span ng-bind="ctrl.SelectedIssue.Description"></span></td>
+				<td><span ng-bind="ctrl.SelectedIssue.DateEntered"></span></td>
+				<td><span ng-bind="ctrl.SelectedIssue.Severity"></span></td>
+				<td><span ng-bind="ctrl.SelectedIssue.Priority"></span></td>
+				<td><span ng-bind="ctrl.SelectedIssue.SubmittedByUser.Name"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div ng-if="!ctrl.IsLoggedIn" class="alert alert-danger" role="alert">
+	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	<span class="sr-only">Error:</span>
+	You must be logged in to resolve!
+</div>

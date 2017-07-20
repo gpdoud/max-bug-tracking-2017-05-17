@@ -1,9 +1,9 @@
 angular.module("BugTrackerApp")
 	.controller("IssuesCtrl", IssuesCtrl);
 
-IssuesCtrl.$inject = ["$http", "$routeParams", "$location", "IssuesSvc", "SystemSvc"];
+IssuesCtrl.$inject = ["$http", "$routeParams", "$location", "$route", "IssuesSvc", "SystemSvc"];
 
-function IssuesCtrl($http, $routeParams, $location, IssuesSvc, SystemSvc) {
+function IssuesCtrl($http, $routeParams, $location, $route, IssuesSvc, SystemSvc) {
 	var self = this;
 
 	self.PageTitle = "Issues";
@@ -12,9 +12,10 @@ function IssuesCtrl($http, $routeParams, $location, IssuesSvc, SystemSvc) {
 	self.Issues = [];
 
 	self.IsLoggedIn = SystemSvc.CheckIfUserLoggedIn();
+	self.ActiveUser = SystemSvc.GetActiveUser();
+	self.AdminRights = SystemSvc.GetAdminRights();
 
-	self.Severity = ["High", "Medium", "Low"];
-	self.Priority = ["High", "Medium", "Low"];
+	self.Severity = self.Priority = ["High", "Medium", "Low"];
 	self.Status = ["New", "Open", "Resolved", "Closed"];
 
 //Get Issues**
@@ -29,6 +30,7 @@ function IssuesCtrl($http, $routeParams, $location, IssuesSvc, SystemSvc) {
 			console.log("Error", err);
 		}
 	);
+
 //Get Selected Issue**
 	IssuesSvc.Get(self.SelectedIssueID).then (
 		function(resp) {
@@ -39,6 +41,7 @@ function IssuesCtrl($http, $routeParams, $location, IssuesSvc, SystemSvc) {
 			console.log("Error", err);
 		}
 	);
+
 //Create Issue**
 	if(self.IsLoggedIn) {
 		self.NewIssue = {
@@ -48,33 +51,45 @@ function IssuesCtrl($http, $routeParams, $location, IssuesSvc, SystemSvc) {
 	self.Create = function(issue) {
 		IssuesSvc.Add(issue).then(
 			function(resp) {
-				$location.path("/issues")
+				$location.path("/issues");
 			},
 			function(err) {
 				console.log("Error", err);
 			}
 		);
 	}
+
 //Edit Issue**
-	self.Edit = function(issue) {
+	self.Edit = function(issue, boo) {
 		IssuesSvc.Change(issue).then(
 			function(resp) {
-				$location.path("/issues")
+				if(boo) {
+					$location.path("/issues");
+				} else {
+					$location.path("/issues/resolve/" + issue.ID);
+				}
 			},
 			function(err) {
 				console.log("Error", err);
 			}
 		);
 	}
+
 //Remove Issue**
 	self.Delete = function(id) {
 		IssuesSvc.Remove(id).then(
 			function(resp) {
-				$location.path("/issues")
+				$location.path("/issues");
 			},
 			function(err) {
 				console.log("Error", err);
 			}
 		);
+	}
+
+	self.ResolveBug = function(issue) {
+		issue.Status = "Open";
+		issue.ResolvedByUserID = self.ActiveUser.ID;
+		self.Edit(issue);
 	}
 }

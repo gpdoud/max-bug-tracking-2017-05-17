@@ -28,5 +28,8 @@ namespace BugTracking.Models {
             this.Email = user.Email;
             this.Role = user.Role;
         }
+
+        //public ICollection<Issue> SubmittedByUsers { get; set; }
+        //public ICollection<Issue> ResolvedByUsers { get; set; }
     }
 }

@@ -197,18 +197,20 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IssuesController.cs" />
+    <Compile Include="Controllers\IssueSolutionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="JsonNetResult.cs" />
-    <Compile Include="Migrations\201707201333340_Initialization.cs" />
-    <Compile Include="Migrations\201707201333340_Initialization.Designer.cs">
-      <DependentUpon>201707201333340_Initialization.cs</DependentUpon>
+    <Compile Include="Migrations\201707201911548_Initialization.cs" />
+    <Compile Include="Migrations\201707201911548_Initialization.Designer.cs">
+      <DependentUpon>201707201911548_Initialization.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BugTrackingContext.cs" />
     <Compile Include="Models\Issue.cs" />
+    <Compile Include="Models\IssueSolution.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Msg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -280,6 +282,11 @@
     <Content Include="Views\Issues\Details.cshtml" />
     <Content Include="Views\Issues\Edit.cshtml" />
     <Content Include="Views\Issues\Index.cshtml" />
+    <Content Include="Views\IssueSolutions\Create.cshtml" />
+    <Content Include="Views\IssueSolutions\Delete.cshtml" />
+    <Content Include="Views\IssueSolutions\Details.cshtml" />
+    <Content Include="Views\IssueSolutions\Edit.cshtml" />
+    <Content Include="Views\IssueSolutions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,8 +300,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707201333340_Initialization.resx">
-      <DependentUpon>201707201333340_Initialization.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707201911548_Initialization.resx">
+      <DependentUpon>201707201911548_Initialization.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
