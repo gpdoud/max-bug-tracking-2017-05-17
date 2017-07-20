@@ -7,13 +7,13 @@ namespace BugTracking.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class UpdatedUserModel : IMigrationMetadata
+    public sealed partial class Initialization : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatedUserModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initialization));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707191612528_Updated-User-Model"; }
+            get { return "201707201333340_Initialization"; }
         }
         
         string IMigrationMetadata.Source

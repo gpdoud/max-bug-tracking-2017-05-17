@@ -35,6 +35,26 @@ function BugTrackerConfig($routeProvider, $locationProvider) {
 			controller: 'AuthenticationCtrl', 
 			controllerAs: 'ctrl'
 		})
+		.when('/users', {
+			templateUrl: 'views/user views/users-view.html',
+			controller: 'UserCtrl',
+			controllerAs: 'ctrl'
+		})
+		.when('/users/detail/:id', {
+			templateUrl: 'views/user views/users-detail-view.html',
+			controller: 'UserCtrl',
+			controllerAs: 'ctrl'
+		})
+		.when('/users/edit/:id', {
+			templateUrl: 'views/user views/users-edit-view.html',
+			controller: 'UserCtrl',
+			controllerAs: 'ctrl'
+		})
+		.when('/users/add/', {
+			templateUrl: 'views/user views/users-add-view.html',
+			controller: 'UserCtrl',
+			controllerAs: 'ctrl'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

@@ -16,7 +16,7 @@ namespace BugTracking.Models {
         [MaxLength(255)]
         public string Email { get; set; }
         [Required]
-        [StringLength(16, MinimumLength = 8, ErrorMessage = "Must input valid password")]
+        [MaxLength(16)]
         public string Password { get; set; }
         [Required]
         [MaxLength(100)]
