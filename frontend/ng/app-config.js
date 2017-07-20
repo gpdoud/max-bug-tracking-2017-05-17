@@ -36,22 +36,22 @@ function BugTrackerConfig($routeProvider, $locationProvider) {
 			controllerAs: 'ctrl'
 		})
 		.when('/users', {
-			templateUrl: 'views/user views/users-view.html',
+			templateUrl: 'views/user views/user-view.html',
 			controller: 'UserCtrl',
 			controllerAs: 'ctrl'
 		})
 		.when('/users/detail/:id', {
-			templateUrl: 'views/user views/users-detail-view.html',
+			templateUrl: 'views/user views/user-detail-view.html',
 			controller: 'UserCtrl',
 			controllerAs: 'ctrl'
 		})
 		.when('/users/edit/:id', {
-			templateUrl: 'views/user views/users-edit-view.html',
+			templateUrl: 'views/user views/user-edit-view.html',
 			controller: 'UserCtrl',
 			controllerAs: 'ctrl'
 		})
 		.when('/users/add/', {
-			templateUrl: 'views/user views/users-add-view.html',
+			templateUrl: 'views/user views/user-add.html',
 			controller: 'UserCtrl',
 			controllerAs: 'ctrl'
 		})
