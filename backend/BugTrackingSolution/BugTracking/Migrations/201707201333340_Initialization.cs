@@ -30,6 +30,7 @@ namespace BugTracking.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 255),
                         Email = c.String(nullable: false, maxLength: 255),
+                        Password = c.String(nullable: false, maxLength: 16),
                         Role = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.ID);

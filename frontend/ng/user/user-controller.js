@@ -5,7 +5,7 @@ UsersCtrl.$inject = ["$http", "$routeParams", "$location", "SystemSvc", "UserSvc
 
 function UsersCtrl($http, $routeParams, $location, SystemSvc, UserSvc) {
 	var self = this;
-	self.AuthenticatedUser = SystemSvc.AuthenticatedUser;
+	self.AuthenticatedUser = SystemSvc.GetActiveUser();
 	UserSvc.GetUsers()
 		.then(
 			function (resp) {
@@ -16,6 +16,7 @@ function UsersCtrl($http, $routeParams, $location, SystemSvc, UserSvc) {
 				console.log("Error", err);
 			}
 		);
+
 	self.SelectedUserID = $routeParams.id;
 	self.PageTitle = "Users";
 	self.NewUser = [];

@@ -5,6 +5,7 @@ UserSvc.$inject = ["$http"];
 
 function UserSvc($http) {
 	var self = this;
+	
 	self.GetUsers = function() {
 		return $http.get("http://localhost:28229//Users/List")
 	}

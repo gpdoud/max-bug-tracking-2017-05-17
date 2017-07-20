@@ -16,6 +16,9 @@ namespace BugTracking.Models {
         [MaxLength(255)]
         public string Email { get; set; }
         [Required]
+        [MaxLength(16)]
+        public string Password { get; set; }
+        [Required]
         [MaxLength(100)]
         public string Role { get; set; }
 

@@ -202,9 +202,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="JsonNetResult.cs" />
-    <Compile Include="Migrations\201707181914584_Initialization.cs" />
-    <Compile Include="Migrations\201707181914584_Initialization.Designer.cs">
-      <DependentUpon>201707181914584_Initialization.cs</DependentUpon>
+    <Compile Include="Migrations\201707201333340_Initialization.cs" />
+    <Compile Include="Migrations\201707201333340_Initialization.Designer.cs">
+      <DependentUpon>201707201333340_Initialization.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BugTrackingContext.cs" />
@@ -293,8 +293,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707181914584_Initialization.resx">
-      <DependentUpon>201707181914584_Initialization.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707201333340_Initialization.resx">
+      <DependentUpon>201707201333340_Initialization.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

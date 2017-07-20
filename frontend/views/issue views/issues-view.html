@@ -1,6 +1,6 @@
 <div>
 	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
-	<a href="#/">Create New</a> - 
+	<a href="#/issues/add">New Bug Report</a> - 
 	<label>Search: <input ng-model="ctrl.SearchCriteria"></label>
 </div>
 <div>
@@ -29,7 +29,7 @@
 				<td>
 					<a href="#/issues/edit/{{issues.ID}}" class="GlyphLink">
 						<span title="Edit" class="glyphicon glyphicon-pencil"></span>
-					</a>&nbsp;
+					</a>
 					<a href="#/issues/details/{{issues.ID}}" class="GlyphLink">
 						<span title="Details" class="glyphicon glyphicon-list-alt"></span>
 					</a>
