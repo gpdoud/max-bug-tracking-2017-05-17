@@ -22,8 +22,6 @@ function IssuesCtrl($http, $routeParams, $location, $route, IssuesSvc, SystemSvc
 //Get Issues**
 	IssuesSvc.List().then (
 		function(resp) {
-			
-
 			if(self.SelectedStatus == null || self.SelectedStatus == undefined) {
 				self.Issues = resp.data;
 
