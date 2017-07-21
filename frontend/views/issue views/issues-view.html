@@ -7,32 +7,61 @@
 	<table class="table">
 		<thead>
 			<tr>					
-				<th>ID</th>
+				<th ng-if="!ctrl.IsLoggedIn">ID</th>
+				<th ng-if="ctrl.IsLoggedIn"></th>
 				<th>Description</th>
 				<th>Date Entered</th>
 				<th>Severity</th>
 				<th>Priority</th>
 				<th>Status</th>
 				<th>Submitted By</th>
+				<th>Resolved By</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="issues in ctrl.Issues | filter: ctrl.SearchCriteria">					
-				<td><span ng-bind="issues.ID"></span></td>
-				<td><span ng-bind="issues.Description"></span></td>
-				<td><span ng-bind="issues.DateEntered"></span></td>
-				<td><span ng-bind="issues.Severity"></span></td>
-				<td><span ng-bind="issues.Priority"></span></td>	
-				<td><span ng-bind="issues.Status"></span></td>	
-				<td><span ng-bind="issues.SubmittedByUser.Name"></span></td>
+			<tr ng-repeat="issue in ctrl.Issues | filter: ctrl.SearchCriteria">					
+				<td ng-if="!ctrl.IsLoggedIn">
+					<span ng-bind="issue.ID"></span>
+				</td>
+				<td ng-if="ctrl.IsLoggedIn">
+					<button ng-click="ctrl.ResolveBug(issue, false)" ng-if="issue.Status == 'New'" class="btn btn-info">Resolve</button>
+
+					<span ng-if="issue.Status == 'Open' && issue.ResolvedByUser.ID == ctrl.ActiveUser.ID">
+						<a href="#/issues/resolve/{{issue.ID}}" class="GlyphLink">
+							<button class="btn btn-info">Resolve</button>
+						</a>
+					</span>
+				</td>
+				<td><span ng-bind="issue.Description"></span></td>
+				<td><span ng-bind="issue.DateEntered"></span></td>
+				<td><span ng-bind="issue.Severity"></span></td>
+				<td><span ng-bind="issue.Priority"></span></td>	
+				<td><span ng-bind="issue.Status"></span></td>	
+				<td><span ng-bind="issue.SubmittedByUser.Name"></span></td>
+				<td ng-if="issue.ResolvedByUser.Name != null">
+					<span ng-bind="issue.ResolvedByUser.Name"></span>
+				</td>
+				<td ng-if="issue.ResolvedByUser.Name == null">
+					<span>Not resolved yet</span>
+				</td>
 				<td>
-					<a href="#/issues/edit/{{issues.ID}}" class="GlyphLink">
-						<span title="Edit" class="glyphicon glyphicon-pencil"></span>
-					</a>
-					<a href="#/issues/details/{{issues.ID}}" class="GlyphLink">
-						<span title="Details" class="glyphicon glyphicon-list-alt"></span>
-					</a>
+					<span ng-hide="issue.Status == 'Closed' || issue.Status == 'Resolved'">
+						<a href="#/issues/edit/{{issue.ID}}" class="GlyphLink">
+							<span title="Edit" class="glyphicon glyphicon-pencil"></span>
+						</a>
+					</span>
+					<span ng-if="issue.Status == 'New' || issue.Status == 'Open'">
+						<a href="#/issues/details/{{issue.ID}}" class="GlyphLink">
+							<span title="Details" class="glyphicon glyphicon-list-alt"></span>
+						</a>
+					</span>
+					<span ng-if="issue.Status == 'Closed' || issue.Status == 'Resolved'">
+						<a href="#/issues/resolve/details/{{issue.ID}}" class="GlyphLink">
+							<span title="Details" class="glyphicon glyphicon-list-alt"></span>
+						</a>
+					</span>
+					
 				</td>
 			</tr>
 		</tbody>

@@ -13,7 +13,7 @@ namespace BugTracking.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201707201333340_Initialization"; }
+            get { return "201707211337505_Initialization"; }
         }
         
         string IMigrationMetadata.Source

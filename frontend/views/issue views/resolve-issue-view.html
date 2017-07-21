@@ -1,0 +1,57 @@
+<div ng-if="ctrl.IsLoggedIn">
+	<div><span id="PageTitle">Resolve Bug</span></div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Description</th>
+				<th>Date Entered</th>
+				<th>Severity</th>
+				<th>Priority</th>
+				<th>Submitted By</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span ng-bind="ctrl.SelectedIssue.Description"></span></td>
+				<td><span ng-bind="ctrl.SelectedIssue.DateEntered"></span></td>
+				<td><span ng-bind="ctrl.SelectedIssue.Severity"></span></td>
+				<td><span ng-bind="ctrl.SelectedIssue.Priority"></span></td>
+				<td><span ng-bind="ctrl.SelectedIssue.SubmittedByUser.Name"></span></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="form-group row">
+		<label for="issue-resolve-user" class="col-md-2 control-label" style="text-align: right;">Resolving User</label>
+
+		<div class="col-md-2">
+			<input class="form-control" type="text" disabled="disabled" 
+			ng-model="ctrl.SelectedIssue.ResolvedByUser.Name" id="issue-resolve-user">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="issue-status" class="col-md-2 control-label" style="text-align: right;">Status</label>
+
+		<div class="col-md-2">
+			<select class="form-control" ng-model="ctrl.SelectedIssue.Status" id="issue-status"
+			ng-options="status for status in ctrl.Status"></select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="issue-solution" class="col-md-2 control-label" style="text-align: right;">Solution</label>
+
+		<div class="col-md-7">
+			<textarea class="form-control" ng-model="ctrl.SelectedIssue.Solution" 
+			id="issue-solution" rows="5" maxlength="2000"></textarea>
+		</div>
+	</div>
+
+	<button class="btn" ng-click="ctrl.Edit(ctrl.SelectedIssue, true)">Save</button>&nbsp;
+	<a href="#/issues">Back to list</a>
+</div>
+
+<div ng-if="!ctrl.IsLoggedIn" class="alert alert-danger" role="alert">
+	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	<span class="sr-only">Error:</span>
+	You must be logged in to resolve!
+</div>

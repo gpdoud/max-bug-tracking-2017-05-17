@@ -30,6 +30,18 @@ function SystemSvc($http, $filter, $location, $route) {
 		}
 	}
 
+	self.GetAdminRights = function() {
+		if(self.ActiveUser != undefined) {
+			if(self.ActiveUser.Role == "Admin") {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return undefined;
+		}
+	}
+
 	self.ConvertToJsonDate = function(value) {
 		return $filter('date')(new Date(value), 'MM/dd/yyyy');
 	}
