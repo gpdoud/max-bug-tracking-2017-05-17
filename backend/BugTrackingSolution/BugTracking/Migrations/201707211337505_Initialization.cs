@@ -17,6 +17,7 @@ namespace BugTracking.Migrations
                         Severity = c.String(nullable: false, maxLength: 25),
                         Priority = c.String(nullable: false, maxLength: 25),
                         Status = c.String(nullable: false, maxLength: 25),
+                        Solution = c.String(maxLength: 2000),
                         SubmittedByUserID = c.Int(nullable: false),
                         ResolvedByUserID = c.Int(),
                     })
@@ -38,35 +39,14 @@ namespace BugTracking.Migrations
                     })
                 .PrimaryKey(t => t.ID);
             
-            CreateTable(
-                "dbo.IssueSolutions",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Solution = c.String(nullable: false, maxLength: 1000),
-                        DateEntered = c.DateTime(nullable: false),
-                        IssueID = c.Int(nullable: false),
-                        UserID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Issues", t => t.IssueID, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserID)
-                .Index(t => t.IssueID)
-                .Index(t => t.UserID);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.IssueSolutions", "UserID", "dbo.Users");
-            DropForeignKey("dbo.IssueSolutions", "IssueID", "dbo.Issues");
             DropForeignKey("dbo.Issues", "SubmittedByUserID", "dbo.Users");
             DropForeignKey("dbo.Issues", "ResolvedByUserID", "dbo.Users");
-            DropIndex("dbo.IssueSolutions", new[] { "UserID" });
-            DropIndex("dbo.IssueSolutions", new[] { "IssueID" });
             DropIndex("dbo.Issues", new[] { "ResolvedByUserID" });
             DropIndex("dbo.Issues", new[] { "SubmittedByUserID" });
-            DropTable("dbo.IssueSolutions");
             DropTable("dbo.Users");
             DropTable("dbo.Issues");
         }

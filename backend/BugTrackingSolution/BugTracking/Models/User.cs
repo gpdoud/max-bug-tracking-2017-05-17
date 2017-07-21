@@ -26,10 +26,8 @@ namespace BugTracking.Models {
         {
             this.Name = user.Name;
             this.Email = user.Email;
+            this.Password = user.Password;
             this.Role = user.Role;
         }
-
-        //public ICollection<Issue> SubmittedByUsers { get; set; }
-        //public ICollection<Issue> ResolvedByUsers { get; set; }
     }
 }

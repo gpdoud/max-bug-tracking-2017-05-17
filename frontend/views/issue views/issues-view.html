@@ -25,7 +25,13 @@
 					<span ng-bind="issue.ID"></span>
 				</td>
 				<td ng-if="ctrl.IsLoggedIn">
-					<button ng-click="ctrl.ResolveBug(issue, false)" ng-if="issue.Status == 'New'" class="btn">Resolve</button>
+					<button ng-click="ctrl.ResolveBug(issue, false)" ng-if="issue.Status == 'New'" class="btn btn-info">Resolve</button>
+
+					<span ng-if="issue.Status == 'Open' && issue.ResolvedByUser.ID == ctrl.ActiveUser.ID">
+						<a href="#/issues/resolve/{{issue.ID}}" class="GlyphLink">
+							<button class="btn btn-info">Resolve</button>
+						</a>
+					</span>
 				</td>
 				<td><span ng-bind="issue.Description"></span></td>
 				<td><span ng-bind="issue.DateEntered"></span></td>
@@ -40,12 +46,22 @@
 					<span>Not resolved yet</span>
 				</td>
 				<td>
-					<a href="#/issues/edit/{{issue.ID}}" class="GlyphLink">
-						<span title="Edit" class="glyphicon glyphicon-pencil"></span>
-					</a>
-					<a href="#/issues/details/{{issue.ID}}" class="GlyphLink">
-						<span title="Details" class="glyphicon glyphicon-list-alt"></span>
-					</a>
+					<span ng-hide="issue.Status == 'Closed' || issue.Status == 'Resolved'">
+						<a href="#/issues/edit/{{issue.ID}}" class="GlyphLink">
+							<span title="Edit" class="glyphicon glyphicon-pencil"></span>
+						</a>
+					</span>
+					<span ng-if="issue.Status == 'New' || issue.Status == 'Open'">
+						<a href="#/issues/details/{{issue.ID}}" class="GlyphLink">
+							<span title="Details" class="glyphicon glyphicon-list-alt"></span>
+						</a>
+					</span>
+					<span ng-if="issue.Status == 'Closed' || issue.Status == 'Resolved'">
+						<a href="#/issues/resolve/details/{{issue.ID}}" class="GlyphLink">
+							<span title="Details" class="glyphicon glyphicon-list-alt"></span>
+						</a>
+					</span>
+					
 				</td>
 			</tr>
 		</tbody>

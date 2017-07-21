@@ -45,6 +45,7 @@ function IssuesCtrl($http, $routeParams, $location, $route, IssuesSvc, SystemSvc
 //Create Issue**
 	if(self.IsLoggedIn) {
 		self.NewIssue = {
+			Status: "New",
 			SubmittedByUserID: SystemSvc.GetActiveUser().ID
 		};
 	}
@@ -90,6 +91,6 @@ function IssuesCtrl($http, $routeParams, $location, $route, IssuesSvc, SystemSvc
 	self.ResolveBug = function(issue) {
 		issue.Status = "Open";
 		issue.ResolvedByUserID = self.ActiveUser.ID;
-		self.Edit(issue);
+		self.Edit(issue, false);
 	}
 }

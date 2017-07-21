@@ -35,8 +35,8 @@
 			<label for="issue-status" class="col-md-2 control-label" style="text-align: right;">Status</label>
 
 			<div class="col-md-2">
-				<select class="form-control" ng-model="ctrl.NewIssue.Status" id="issue-status"
-				ng-options="status for status in ctrl.Status"></select>
+				<select class="form-control" ng-model="ctrl.NewIssue.Status" id="issue-status" 
+				disabled="disabled" ng-options="status for status in ctrl.Status"></select>
 			</div>
 		</div>
 
@@ -45,7 +45,7 @@
 
 			<div class="col-md-7">
 				<textarea class="form-control" ng-model="ctrl.NewIssue.Description" 
-				id="issue-description" rows="5" maxlength="255"></textarea>
+				id="issue-description" rows="5" maxlength="1000"></textarea>
 			</div>
 		</div>
 

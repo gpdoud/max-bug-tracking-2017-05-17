@@ -1,4 +1,4 @@
-<div ng-if="ctrl.IsLoggedIn">
+<div ng-if="ctrl.IsLoggedIn && (ctrl.SelectedIssue.Status == 'New' || ctrl.SelectedIssue.Status == 'Open')">
 	<div>
 		<div><span id="PageTitle">Edit</span></div>
 	</div>
@@ -45,7 +45,7 @@
 
 			<div class="col-md-7">
 				<textarea class="form-control" ng-model="ctrl.SelectedIssue.Description" 
-				id="issue-description" rows="5" maxlength="255"></textarea>
+				id="issue-description" rows="5" maxlength="1000"></textarea>
 			</div>
 		</div>
 
@@ -58,4 +58,9 @@
 	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 	<span class="sr-only">Error:</span>
 	You must be logged in to edit!
+</div>
+<div ng-if="ctrl.IsLoggedIn && (ctrl.SelectedIssue.Status == 'Closed' || ctrl.SelectedIssue.Status == 'Resolved')" class="alert alert-danger" role="alert">
+	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	<span class="sr-only">Error:</span>
+	This bug has already been solved!
 </div>

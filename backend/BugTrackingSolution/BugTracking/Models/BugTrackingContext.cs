@@ -23,7 +23,5 @@ namespace BugTracking.Models
         public System.Data.Entity.DbSet<BugTracking.Models.Issue> Issues { get; set; }
 
         public System.Data.Entity.DbSet<BugTracking.Models.User> Users { get; set; }
-
-        public System.Data.Entity.DbSet<BugTracking.Models.IssueSolution> IssueSolutions { get; set; }
     }
 }

@@ -23,7 +23,9 @@ namespace BugTracking.Models {
         [Required]
         [MaxLength(25)]
         public string Status { get; set; }
-        
+        [MaxLength(2000)]
+        public string Solution { get; set; }
+
         public int SubmittedByUserID { get; set; }
         public int? ResolvedByUserID { get; set; }
 
@@ -39,6 +41,7 @@ namespace BugTracking.Models {
             this.Severity = issue.Severity;
             this.Priority = issue.Priority;
             this.Status = issue.Status;
+            this.Solution = issue.Solution;
             this.SubmittedByUserID = issue.SubmittedByUserID;
             this.ResolvedByUserID = issue.ResolvedByUserID;
         }
