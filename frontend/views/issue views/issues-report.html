@@ -1,9 +1,4 @@
 <div>
-	<div><span id="PageTitle">Bug Reports</span></div>
-	<a href="#/issues/add" style="float: left;"><span class="glyphicon glyphicon-menu-right"></span>  New Bug Report</a>
-	<label style="float: right;">Search: <input ng-model="ctrl.SearchCriteria"></label>
-</div>
-<div>
 	<table class="table">
 		<thead>
 			<tr>					
@@ -20,7 +15,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="issue in ctrl.Issues | filter: ctrl.SearchCriteria">					
+			<tr ng-if="issue.ID != undefined" ng-repeat="issue in ctrl.Issues | filter: ctrl.SearchCriteria">
 				<td ng-if="!ctrl.IsLoggedIn">
 					<span ng-bind="issue.ID"></span>
 				</td>

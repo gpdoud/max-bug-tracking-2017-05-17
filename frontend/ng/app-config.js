@@ -40,6 +40,12 @@ function BugTrackerConfig($routeProvider, $locationProvider) {
 			controller: 'IssuesCtrl',
 			controllerAs: 'ctrl'
 		})
+
+		.when('/issues/report/:status', {
+			templateUrl: 'views/issue views/issues-report.html',
+			controller: 'IssuesCtrl',
+			controllerAs: 'ctrl'
+		})
 		.when('/login', {
 			templateUrl: 'views/login-view.html',
 			controller: 'AuthenticationCtrl', 

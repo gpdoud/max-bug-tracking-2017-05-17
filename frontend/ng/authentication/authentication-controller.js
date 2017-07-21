@@ -28,14 +28,18 @@ function AuthenticationCtrl($http, $routeParams, $location, $route, UserSvc, Sys
 		SystemSvc.SetActiveUser(undefined);
 		self.LabelErrorMessage = false;
 
-		for(var x in self.Users) {
-			if(user.Email == self.Users[x].Email && user.Password == self.Users[x].Password) {
-				SystemSvc.SetActiveUser(self.Users[x]);
-				$location.path("/");
-				makeActive(1);
-				break;
-			} else {
-				SystemSvc.SetActiveUser(undefined);
+		if(user == undefined) {
+			self.LabelErrorMessage = true;
+		} else {
+			for(var x in self.Users) {
+				if(user.Email == self.Users[x].Email && user.Password == self.Users[x].Password) {
+					SystemSvc.SetActiveUser(self.Users[x]);
+					$location.path("/");
+					makeActive(1);
+					break;
+				} else {
+					SystemSvc.SetActiveUser(undefined);
+				}
 			}
 		}
 
