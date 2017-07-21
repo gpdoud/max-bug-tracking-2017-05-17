@@ -32,6 +32,7 @@ function AuthenticationCtrl($http, $routeParams, $location, $route, UserSvc, Sys
 			if(user.Email == self.Users[x].Email && user.Password == self.Users[x].Password) {
 				SystemSvc.SetActiveUser(self.Users[x]);
 				$location.path("/");
+				makeActive(1);
 				break;
 			} else {
 				SystemSvc.SetActiveUser(undefined);

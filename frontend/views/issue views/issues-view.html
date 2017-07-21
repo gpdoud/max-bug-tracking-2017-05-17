@@ -25,11 +25,11 @@
 					<span ng-bind="issue.ID"></span>
 				</td>
 				<td ng-if="ctrl.IsLoggedIn">
-					<button ng-click="ctrl.ResolveBug(issue, false)" ng-if="issue.Status == 'New'" class="btn btn-info">Resolve</button>
+					<button ng-click="ctrl.ResolveBug(issue, false)" ng-if="issue.Status == 'New'" class="btn">Resolve</button>
 
 					<span ng-if="issue.Status == 'Open' && issue.ResolvedByUser.ID == ctrl.ActiveUser.ID">
 						<a href="#/issues/resolve/{{issue.ID}}" class="GlyphLink">
-							<button class="btn btn-info">Resolve</button>
+							<button class="btn">Resolve</button>
 						</a>
 					</span>
 				</td>
