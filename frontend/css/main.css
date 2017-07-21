@@ -1,3 +1,7 @@
+body {
+	font-size: 15px;
+}
+
 #View {
 	width: 80%;
 	margin: auto;
@@ -41,6 +45,7 @@ a:active {
 .btn {
 	color: white;
 	background-color: #de6647;
+	box-shadow: 0 4px 12px 0 rgba(0,0,0,0.2), 0 2px 16px 0 rgba(0,0,0,0.19);
 	border-color: #da512f;
 }
 
@@ -48,17 +53,21 @@ a:active {
 	color: white;
 	background-color: #da512f;
 	border-color: #da512f;
+	box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2), 0 0 12px 0 rgba(0,0,0,0.19);
+	transform: translateY(2px);
 }
 
 .btn:hover {
 	color: white;
 	background-color: #da512f;
+	box-shadow: 0 4px 12px 0 rgba(0,0,0,0.2), 0 2px 16px 0 rgba(0,0,0,0.19);
 	border-color: #da512f;
 }
 
 .btn-delete {
 	color: #ad3b1f;
 	background-color: white;
+	box-shadow: 0 4px 12px 0 rgba(0,0,0,0.2), 0 2px 16px 0 rgba(0,0,0,0.19);
 	border-color: #ad3b1f;
 }
 
@@ -66,11 +75,14 @@ a:active {
 	color: #ad3b1f;
 	background-color: white;
 	border-color: #ad3b1f;
+	box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2), 0 0 12px 0 rgba(0,0,0,0.19);
+	transform: translateY(2px);
 }
 
 .btn-delete:hover {
 	color: #ad3b1f;
 	background-color: white;
+	box-shadow: 0 4px 12px 0 rgba(0,0,0,0.2), 0 2px 16px 0 rgba(0,0,0,0.19);
 	border-color: #ad3b1f;
 }
 

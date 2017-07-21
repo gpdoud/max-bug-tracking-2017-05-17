@@ -9,6 +9,7 @@ function IssuesCtrl($http, $routeParams, $location, $route, IssuesSvc, SystemSvc
 	self.PageTitle = "Issue";
 
 	self.SelectedIssueID = $routeParams.id;
+	self.SelectedStatus = $routeParams.status;
 	self.Issues = [];
 
 	self.IsLoggedIn = SystemSvc.CheckIfUserLoggedIn();
@@ -21,10 +22,23 @@ function IssuesCtrl($http, $routeParams, $location, $route, IssuesSvc, SystemSvc
 //Get Issues**
 	IssuesSvc.List().then (
 		function(resp) {
-			self.Issues = resp.data; 
-			for(var idx in self.Issues) {
-				self.Issues[idx].DateEntered = SystemSvc.ConvertToJsonDate(self.Issues[idx].DateEntered);
+			
+
+			if(self.SelectedStatus == null || self.SelectedStatus == undefined) {
+				self.Issues = resp.data;
+
+				for(var idx in self.Issues) {
+					self.Issues[idx].DateEntered = SystemSvc.ConvertToJsonDate(self.Issues[idx].DateEntered);
+				}
+			} else {
+				for(var idx in resp.data) {
+					if(resp.data[idx].Status == self.SelectedStatus && resp.data[idx] != null) {
+						self.Issues[idx] = resp.data[idx];
+						self.Issues[idx].DateEntered = SystemSvc.ConvertToJsonDate(self.Issues[idx].DateEntered);
+					}
+				}
 			}
+			
 		},
 		function(err) {
 			console.log("Error", err);
@@ -45,6 +59,7 @@ function IssuesCtrl($http, $routeParams, $location, $route, IssuesSvc, SystemSvc
 //Create Issue**
 	if(self.IsLoggedIn) {
 		self.NewIssue = {
+			DateEntered: SystemSvc.ConvertToJsonDate(new Date()),
 			Status: "New",
 			SubmittedByUserID: SystemSvc.GetActiveUser().ID
 		};
