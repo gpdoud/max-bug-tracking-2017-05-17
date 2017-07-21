@@ -22,9 +22,61 @@ a.GlyphLink {
 	text-decoration: none;
 }
 
+a:link {
+	color: #ad3b1f;
+}
+
+a:visited {
+	color: #8b2f18;
+}
+
+a:hover {
+	color: #8b2f18;
+}
+
+a:active {
+	color: #ad3b1f;
+}
+
+.btn {
+	color: white;
+	background-color: #de6647;
+	border-color: #da512f;
+}
+
+.btn:active {
+	color: white;
+	background-color: #da512f;
+	border-color: #da512f;
+}
+
+.btn:hover {
+	color: white;
+	background-color: #da512f;
+	border-color: #da512f;
+}
+
+.btn-delete {
+	color: #ad3b1f;
+	background-color: white;
+	border-color: #ad3b1f;
+}
+
+.btn-delete:active {
+	color: #ad3b1f;
+	background-color: white;
+	border-color: #ad3b1f;
+}
+
+.btn-delete:hover {
+	color: #ad3b1f;
+	background-color: white;
+	border-color: #ad3b1f;
+}
+
 .navbar-default {
 	background-color: #ad3b1f;
-	border-color: #8b2f18;
+	border-color: #ad3b1f;
 }
 .navbar-default .navbar-brand {
 	color: #ecf0f1;

@@ -1,6 +1,6 @@
 <div class="jumbotron" style="padding: 30px; border-radius: 7px;">
 	<div ng-if="ctrl.LoggedIn"  class="form-group row">
-		<button class="btn btn-primary col-md-offset-4 col-md-3" ng-click="ctrl.Logout()">Logout</button>
+		<button class="btn col-md-offset-4 col-md-3" ng-click="ctrl.Logout()">Logout</button>
 	</div>
 
 	<div ng-if="!ctrl.LoggedIn">
@@ -24,7 +24,7 @@
 
 		<br />
 		<div class="form-group row">
-			<button class="btn btn-primary col-md-offset-4 col-md-3" ng-click="ctrl.Login(ctrl.LoginUser)">Login</button>
+			<button class="btn col-md-offset-4 col-md-3" ng-click="ctrl.Login(ctrl.LoginUser)">Login</button>
 		</div>
 
 		<div ng-if="ctrl.LabelErrorMessage" class="alert alert-danger" role="alert">

@@ -38,6 +38,6 @@
 		</div>
 	</div>
 
-	<button ng-if="ctrl.IsLoggedIn" class="btn btn-danger" ng-click="ctrl.Delete(ctrl.SelectedIssue.ID)">Delete</button>&nbsp;
+	<button ng-if="ctrl.IsLoggedIn && ctrl.AdminRights" class="btn btn-delete" ng-click="ctrl.Delete(ctrl.SelectedIssue.ID)">Delete</button>&nbsp;
 	<a href="#/issues">Back to list</a>
 </div>
