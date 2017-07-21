@@ -51,12 +51,12 @@
 
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active" id="homeTab"><a href="#/">Home</a></li>
-						<li id="usersTab"><a href="#/users">Users</a></li>
-						<li id="usersTab"><a href="#/issues">Issues</a></li>
+						<li class="active" id="homeTab" onclick="makeActive(1)"><a href="#/">Home</a></li>
+						<li id="usersTab" onclick="makeActive(2)"><a href="#/users">Users</a></li>
+						<li id="issuesTab" onclick="makeActive(3)"><a href="#/issues">Issues</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li id="loginTab"><a href="#/login">Login | Logout</a></li>
+						<li id="loginTab" onclick="makeActive(4)"><a href="#/login">Login | Logout</a></li>
 					</ul>
 				</div>
 			</div>
