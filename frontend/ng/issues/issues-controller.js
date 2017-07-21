@@ -6,7 +6,7 @@ IssuesCtrl.$inject = ["$http", "$routeParams", "$location", "$route", "IssuesSvc
 function IssuesCtrl($http, $routeParams, $location, $route, IssuesSvc, SystemSvc) {
 	var self = this;
 
-	self.PageTitle = "Issues";
+	self.PageTitle = "Issue";
 
 	self.SelectedIssueID = $routeParams.id;
 	self.Issues = [];
