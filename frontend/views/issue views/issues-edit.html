@@ -1,6 +1,6 @@
 <div ng-if="ctrl.IsLoggedIn && (ctrl.SelectedIssue.Status == 'New' || ctrl.SelectedIssue.Status == 'Open')">
 	<div>
-		<div><span id="PageTitle">Edit</span></div>
+		<div><span id="PageTitle">Edit Report</span></div>
 	</div>
 	<hr>
 	<div>
@@ -35,7 +35,7 @@
 			<label for="issue-status" class="col-md-2 control-label" style="text-align: right;">Status</label>
 
 			<div class="col-md-2">
-				<select class="form-control" ng-model="ctrl.SelectedIssue.Status" id="issue-status"
+				<select class="form-control" ng-model="ctrl.SelectedIssue.Status" id="issue-status" disabled="disabled" 
 				ng-options="status for status in ctrl.Status"></select>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 <div>
-	<div><span id="PageTitle"><span ng-bind="ctrl.PageTitle"></span> List</span></div>
+	<div><span id="PageTitle">Bug Reports</span></div>
 	<a href="#/issues/add">New Bug Report</a> - 
 	<label>Search: <input ng-model="ctrl.SearchCriteria"></label>
 </div>
@@ -33,7 +33,7 @@
 						</a>
 					</span>
 				</td>
-				<td><span ng-bind="issue.Description"></span></td>
+				<td style="word-wrap: break-word; max-width: 250px;"><span ng-bind="issue.Description"></span></td>
 				<td><span ng-bind="issue.DateEntered"></span></td>
 				<td><span ng-bind="issue.Severity"></span></td>
 				<td><span ng-bind="issue.Priority"></span></td>	
