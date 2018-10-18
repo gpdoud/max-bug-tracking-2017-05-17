@@ -1,12 +1,12 @@
 angular.module("BugTrackerApp")
-	.controller("UsersCtrl", UsersCtrl);
+	.controller("UserCtrl", UserCtrl);
 
-UsersCtrl.$inject = ["$http", "$routeParams", "$location", "SystemSvc", "UserSvc"];
+UserCtrl.$inject = ["$http", "$routeParams", "$location", "SystemSvc", "UserSvc"];
 
-function UsersCtrl($http, $routeParams, $location, SystemSvc, UserSvc) {
+function UserCtrl($http, $routeParams, $location, SystemSvc, UserSvc) {
 	var self = this;
-	self.AuthenticatedUser = SystemSvc.AuthenticatedUser;
-	UserSvc.GetUsers()
+	self.AuthenticatedUser = SystemSvc.GetActiveUser();
+	UserSvc.List()
 		.then(
 			function (resp) {
 				console.log("SVC Success", resp);
@@ -16,6 +16,7 @@ function UsersCtrl($http, $routeParams, $location, SystemSvc, UserSvc) {
 				console.log("Error", err);
 			}
 		);
+
 	self.SelectedUserID = $routeParams.id;
 	self.PageTitle = "Users";
 	self.NewUser = [];
@@ -83,16 +84,4 @@ function UsersCtrl($http, $routeParams, $location, SystemSvc, UserSvc) {
 			}
 		)
 	}
-//User Login**
-	self.Login = function (username, password) {
-    self.Authenticated = false;
-    for (var idx in self.Users) {
-    	var user = self.Users[idx];
-    	if (user.UserName == username && user.Password == password) {
-    		self.Authenticated = true 
-    		self.AuthenticatedUser = SystemSvc.AuthenticatedUser = user
-    		$location.path("/")
-    	}
-
-    };
 }

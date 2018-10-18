@@ -55,9 +55,9 @@
 		</tbody>
 	</table>
 
-	<button class="btn btn-danger" ng-click="ctrl.Delete(ctrl.SelectedIssue.ID)">Delete</button>&nbsp;
-	<a href="#/issues/edit/{{ctrl.SelectedIssue.ID}}" class="GlyphLink">
-		<button class="btn btn-info">Edit</button>
-	</a>&nbsp;
+	<button ng-if="ctrl.IsLoggedIn && ctrl.AdminRights" class="btn btn-delete" ng-click="ctrl.Delete(ctrl.SelectedIssue.ID)">Delete</button>&nbsp;
+	<a href="#/issues/edit/{{ctrl.SelectedIssue.ID}}" ng-if="ctrl.IsLoggedIn" class="GlyphLink">
+		<button class="btn">Edit</button>&nbsp;
+	</a>
 	<a href="#/issues">Back to list</a>
 </div>

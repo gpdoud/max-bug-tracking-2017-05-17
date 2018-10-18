@@ -202,9 +202,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="JsonNetResult.cs" />
-    <Compile Include="Migrations\201707181914584_Initialization.cs" />
-    <Compile Include="Migrations\201707181914584_Initialization.Designer.cs">
-      <DependentUpon>201707181914584_Initialization.cs</DependentUpon>
+    <Compile Include="Migrations\201707211337505_Initialization.cs" />
+    <Compile Include="Migrations\201707211337505_Initialization.Designer.cs">
+      <DependentUpon>201707211337505_Initialization.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BugTrackingContext.cs" />
@@ -280,6 +280,11 @@
     <Content Include="Views\Issues\Details.cshtml" />
     <Content Include="Views\Issues\Edit.cshtml" />
     <Content Include="Views\Issues\Index.cshtml" />
+    <Content Include="Views\IssueSolutions\Create.cshtml" />
+    <Content Include="Views\IssueSolutions\Delete.cshtml" />
+    <Content Include="Views\IssueSolutions\Details.cshtml" />
+    <Content Include="Views\IssueSolutions\Edit.cshtml" />
+    <Content Include="Views\IssueSolutions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,8 +298,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707181914584_Initialization.resx">
-      <DependentUpon>201707181914584_Initialization.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707211337505_Initialization.resx">
+      <DependentUpon>201707211337505_Initialization.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

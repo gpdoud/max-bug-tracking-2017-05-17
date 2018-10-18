@@ -1,0 +1,66 @@
+<div ng-if="ctrl.IsLoggedIn && (ctrl.SelectedIssue.Status == 'New' || ctrl.SelectedIssue.Status == 'Open')">
+	<div>
+		<div><span id="PageTitle">Edit Report</span></div>
+	</div>
+	<hr>
+	<div>
+		<div class="form-group row">
+			<label for="issue-date-entered" class="col-md-2 control-label" style="text-align: right;">Date Entered</label>
+
+			<div class="col-md-2">
+				<input class="form-control" type="text"
+				ng-model="ctrl.SelectedIssue.DateEntered" id="issue-date-entered">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="issue-severity" class="col-md-2 control-label" style="text-align: right;">Severity</label>
+
+			<div class="col-md-2">
+				<select class="form-control" ng-model="ctrl.SelectedIssue.Severity" id="issue-severity"
+				ng-options="severity for severity in ctrl.Severity"></select>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="issue-priority" class="col-md-2 control-label" style="text-align: right;">Priority</label>
+
+			<div class="col-md-2">
+				<select class="form-control" ng-model="ctrl.SelectedIssue.Priority" id="issue-priority"
+				ng-options="priority for priority in ctrl.Priority"></select>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="issue-status" class="col-md-2 control-label" style="text-align: right;">Status</label>
+
+			<div class="col-md-2">
+				<select class="form-control" ng-model="ctrl.SelectedIssue.Status" id="issue-status" disabled="disabled" 
+				ng-options="status for status in ctrl.Status"></select>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="issue-description" class="col-md-2 control-label" style="text-align: right;">Description</label>
+
+			<div class="col-md-7">
+				<textarea class="form-control" ng-model="ctrl.SelectedIssue.Description" 
+				id="issue-description" rows="5" maxlength="1000"></textarea>
+			</div>
+		</div>
+
+		<button class="btn" ng-click="ctrl.Edit(ctrl.SelectedIssue, true)">Save</button>&nbsp;
+		<a href="#/issues">Back to list</a>
+	</div>
+</div>
+
+<div ng-if="!ctrl.IsLoggedIn" class="alert alert-danger" role="alert">
+	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	<span class="sr-only">Error:</span>
+	You must be logged in to edit!
+</div>
+<div ng-if="ctrl.IsLoggedIn && (ctrl.SelectedIssue.Status == 'Closed' || ctrl.SelectedIssue.Status == 'Resolved')" class="alert alert-danger" role="alert">
+	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	<span class="sr-only">Error:</span>
+	This bug has already been solved!
+</div>

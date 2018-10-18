@@ -1,0 +1,36 @@
+<div class="jumbotron" style="padding: 30px; border-radius: 7px;">
+	<div ng-if="ctrl.LoggedIn"  class="form-group row">
+		<button class="btn col-md-offset-4 col-md-3" ng-click="ctrl.Logout()">Logout</button>
+	</div>
+
+	<div ng-if="!ctrl.LoggedIn">
+		<div class="form-group row">
+			<label for="login-email" class="col-md-3 control-label" style="text-align: right;">Email </label>
+			
+			<div class="col-md-6">
+				<input class="form-control" placeholder="Email" ng-model="ctrl.LoginUser.Email" 
+				id="login-email" type="text">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="login-password" class="col-md-3 control-label" style="text-align: right;">Password </label>
+
+			<div class="col-md-6">
+				<input class="form-control" placeholder="Password" ng-model="ctrl.LoginUser.Password" 
+				id="login-password" type="password">
+			</div>
+		</div>
+
+		<br />
+		<div class="form-group row">
+			<button class="btn col-md-offset-4 col-md-3" ng-click="ctrl.Login(ctrl.LoginUser)">Login</button>
+		</div>
+
+		<div ng-if="ctrl.LabelErrorMessage" class="alert alert-danger" role="alert">
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			<span class="sr-only">Error:</span>
+			Username/Password combination not valid
+		</div>
+	</div>
+</div>
